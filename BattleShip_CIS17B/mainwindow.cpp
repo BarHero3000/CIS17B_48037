@@ -35,10 +35,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->btnPlay->setEnabled(false);
 
-    QPixmap pix1("checkmark.jpg");
-    ui->label->setPixmap(pix1);
-    ui->label->setScaledContents(true);
-    ui->label->setVisible(false);
+    //QPixmap pix1("checkmark.jpg");
+    //ui->label->setPixmap(pix1);
+    //ui->label->setScaledContents(true);
+    //ui->label->setVisible(false);
 
     //Create Grids
     createPlayerGrid();
@@ -57,6 +57,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Setup menuBar
     setupMenu();
+
+    ui->rbtnHorizontal->setChecked(true);
+    direction = 'R';
+    hold = false;
 
 }
 
@@ -183,8 +187,7 @@ void MainWindow::on_btnPlay_clicked() { // Play button
     ui->btnEnterShip->setVisible(false);
     ui->rbtnHorizontal->setVisible(false);
     ui->rbtnVertical->setVisible(false);
-    ui->label->setVisible(false);
-    ui->label_2->setVisible(false);
+    ui->lblPrompt->setVisible(false);
     ui->label_4->setVisible(true);
 
 
@@ -205,8 +208,7 @@ void MainWindow::on_btnReset_clicked() { // Reset button
         playerCells[i]->setEnabled(true);
     }
     numDrops=0;
-    ui->label->setVisible(false);
-    ui->label_2->setText("Click Your Patrol Boat (2)");
+    ui->lblPrompt->setText("Click Your Patrol Boat (2)");
     ui->rbtnHorizontal->setEnabled(true);
     ui->rbtnVertical->setEnabled(true);
 
@@ -220,13 +222,13 @@ void MainWindow::on_btnEnterShip_clicked(){
 void MainWindow::on_rbtnHorizontal_clicked() {
     ui->btnEnterShip->setEnabled(true);
     direction = 'R';
-    hold = false;
+    //hold = false;
 }
 
 void MainWindow::on_rbtnVertical_clicked() {
     ui->btnEnterShip->setEnabled(true);
     direction = 'D';
-    hold = false;
+    //hold = false;
 }
 
 //Add the cells to the Player Grid
